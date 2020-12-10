@@ -30,8 +30,10 @@ import struct Foundation.Data
 
 #if os(Linux)
     import zlibLinux
-#else
+#elseif canImport(zlib)
     import zlib
+#elseif canImport(SwiftWasmZlib)
+    import SwiftWasmZlib
 #endif
 
 /// Compression level whose rawValue is based on the zlib's constants.
